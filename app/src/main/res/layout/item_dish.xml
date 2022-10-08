@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:elevation="16dp"
+    app:cardCornerRadius="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/tvDishName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:layout_margin="5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Dish Name" />
+
+
+        <TextView
+            android:id="@+id/tvprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Price :"
+            android:textSize="24sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDishName" />
+
+        <TextView
+            android:id="@+id/tvPriceInt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginVertical="5dp"
+            android:layout_marginLeft="5dp"
+            app:layout_constraintLeft_toRightOf="@id/tvprice"
+            app:layout_constraintTop_toBottomOf="@id/tvDishName"
+            tools:text="90" />
+
+        <TextView
+            android:id="@+id/tvRupees"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textSize="24sp"
+            android:layout_marginHorizontal="1dp"
+            android:layout_marginVertical="5dp"
+            app:layout_constraintLeft_toRightOf="@id/tvPriceInt"
+            app:layout_constraintTop_toBottomOf="@id/tvDishName"
+            tools:text=" ₹"
+            />
+
+        <TextView
+            android:id="@+id/tvQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Quantity :"
+            android:textSize="24sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvprice" />
+
+        <TextView
+            android:id="@+id/tvQuantityInt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:layout_marginVertical="5dp"
+            android:layout_marginLeft="5dp"
+            app:layout_constraintLeft_toRightOf="@id/tvQuantity"
+            app:layout_constraintTop_toBottomOf="@id/tvprice"
+            tools:text="85" />
+
+        <TextView
+            android:id="@+id/tvGms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:textSize="24sp"
+            android:layout_marginHorizontal="1dp"
+            android:layout_marginVertical="5dp"
+            app:layout_constraintLeft_toRightOf="@id/tvQuantityInt"
+            app:layout_constraintTop_toBottomOf="@id/tvPriceInt"
+            tools:text=" Grams"
+            />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
