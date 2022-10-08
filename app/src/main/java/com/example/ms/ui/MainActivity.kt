@@ -15,15 +15,16 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    // This is the amount user will enter and has to be passed
-    val amount = binding.etBudget
 
     lateinit var adapter: DishAdapter
     private var dishItems = mutableListOf<DishItem>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
+        // This is the amount user will enter and has to be passed
+        val amount = binding.etBudget
 //        val myLM = LinearLayoutManager(this)
 //        val rvDishes = binding.rvUserInfo
 //        rvDishes.adapter = adapter
