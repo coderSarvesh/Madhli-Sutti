@@ -5,8 +5,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
+import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
-import com.example.ms.R
 import com.example.ms.adapter.DishAdapter
 import com.example.ms.data.DishItem
 import com.example.ms.databinding.ActivityMainBinding
@@ -16,38 +16,38 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
 
-    lateinit var adapter: DishAdapter
-    private var dishItems = mutableListOf<DishItem>()
+    private lateinit var adapter: DishAdapter
+    private val dishItems = mutableListOf<DishItem>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // This is the amount user will enter and has to be passed
-        val amount = binding.etBudget
-//        val myLM = LinearLayoutManager(this)
-//        val rvDishes = binding.rvUserInfo
-//        rvDishes.adapter = adapter
-//        rvDishes.layoutManager = myLM
+
+        binding.btnSuggestDishes.setOnClickListener {
+            val amount = binding.etBudget.text.toString().toInt()
+            println(amount)
+            fetchDishes(amount)
+        }
 
         val recyclerView = binding.rvUserInfo
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        fetchDishes()
         adapter = DishAdapter(this, dishItems)
         recyclerView.adapter = adapter
 
     }
 
 
-    private fun fetchDishes() {
+    private fun fetchDishes(amount:Int) {
 
-        val url = ""
+        val url = "https://6342d5c482fe0e2127e6db00--warm-sawine-0692cd.netlify.app/api/dish/$amount"
         // val queue = Volley.newRequestQueue(this)
         // Request a string response from the provided URL.
-        val dishObjectRequest = JsonObjectRequest(Request.Method.GET, url, null,
+        val dishObjectRequest = JsonArrayRequest(Request.Method.GET, url, null,
 
-            {
-                val dishJsonArray = it.getJSONArray("DishItem")
+            { list ->
+                println(list)
+                val dishJsonArray = list
                 val dishArray = ArrayList<DishItem>()
                 for (i in 0 until dishJsonArray.length()) {
                     val dishJsonObject = dishJsonArray.getJSONObject(i)
@@ -68,10 +68,3 @@ class MainActivity : AppCompatActivity() {
         MySingleton.getInstance(this).addToRequestQueue(dishObjectRequest)
     }
 }
-//queue.add(dishObjectRequest)
-//        { response ->
-//
-//            Log.d("SR",response.toString())     },
-//        { error ->
-//            Log.d("SR",error.toString())
-//        }

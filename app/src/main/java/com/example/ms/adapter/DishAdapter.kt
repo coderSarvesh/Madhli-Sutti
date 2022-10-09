@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ms.R
 import com.example.ms.data.DishItem
 
-class DishAdapter(val context:Context, val dishItem: MutableList<DishItem>):RecyclerView.Adapter<DishAdapter.DishViewHolder>(){
+class DishAdapter(private val context:Context, private val dishItem: MutableList<DishItem>):RecyclerView.Adapter<DishAdapter.DishViewHolder>(){
 
 //   private val dishes : ArrayList<DishItem> = ArrayList()
 
