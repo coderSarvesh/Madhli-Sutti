@@ -6,26 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
-    <TextView
-        android:id="@+id/tvEnterYourBudget"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilBudget"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:text="Enter Your Budget"
+        android:hint="Enter Your Budget"
+        android:textSize="18sp"
+        android:layout_margin="15dp"
+        app:endIconCheckable="true"
+        app:endIconMode="clear_text"
+        app:endIconTint="#FF0000"
+        app:errorIconDrawable="@android:drawable/ic_menu_close_clear_cancel"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@id/btnSuggestDishes">
 
-    <EditText
-        android:id="@+id/etBudget"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="number"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEnterYourBudget" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etBudget"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12dp"
+            android:textSize="18sp"
+            android:inputType="number"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnSuggestDishes"
@@ -33,11 +38,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etBudget"
-        android:layout_marginTop="30dp"
-        android:paddingHorizontal="8dp"
-        android:paddingVertical="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tilBudget"
+        android:layout_margin="10dp"
         android:text="Suggest Dishes"
+        app:layout_constraintBottom_toTopOf="@id/rvUserInfo"
         />
 
     <androidx.recyclerview.widget.RecyclerView

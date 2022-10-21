@@ -2,11 +2,11 @@ package com.example.ms.ui
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonArrayRequest
-import com.android.volley.toolbox.JsonObjectRequest
 import com.example.ms.adapter.DishAdapter
 import com.example.ms.data.DishItem
 import com.example.ms.databinding.ActivityMainBinding
@@ -25,7 +25,14 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.btnSuggestDishes.setOnClickListener {
-            val amount = binding.etBudget.text.toString().toInt()
+
+            var amount = binding.etBudget.text.toString()
+            if (amount.isNotBlank() && amount.isNotEmpty()){
+                amount = binding.etBudget.text.toString()
+            }
+            else{
+                Toast.makeText(this, "Enter A Valid Amount", Toast.LENGTH_SHORT).show()
+            }
             println(amount)
             fetchDishes(amount)
         }
@@ -38,7 +45,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun fetchDishes(amount:Int) {
+    private fun fetchDishes(amount: String) {
 
         val url = "https://6342d5c482fe0e2127e6db00--warm-sawine-0692cd.netlify.app/api/dish/$amount"
         // val queue = Volley.newRequestQueue(this)
